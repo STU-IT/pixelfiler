@@ -1,4 +1,14 @@
-﻿using System;
+﻿
+
+/*
+
+En demo fra Søren Magnusson smag@tec.dk
+
+Implementerer http://netpbm.sourceforge.net/doc/pbm.html#plainpbm
+
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
