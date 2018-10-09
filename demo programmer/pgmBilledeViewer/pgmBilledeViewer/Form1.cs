@@ -17,7 +17,12 @@ namespace pgmBilledeViewer
             InitializeComponent();
             
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.Image = Program.indlæsBillede();
+            string fileName;
+            //fileName = "feep_p2_plain.pgm";
+            fileName = "mountain.ascii.pgm";
+            //fileName = "casablanca.ascii.pgm";
+
+            pictureBox1.Image = Program.indlæsBillede(@"..\..\demobilleder\" + fileName);
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)

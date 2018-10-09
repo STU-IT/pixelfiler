@@ -17,10 +17,10 @@ namespace pgmBilledeViewer
             graymap = 2,
             pixelmap = 3
         };
-        public static Bitmap indlæsBillede()
+        public static Bitmap indlæsBillede(string filepath)
         {
-            string filename = @"..\..\demobilleder\" + "feep_p2_plain.pgm";
-            foreach (string line in File.ReadLines(filename))
+            //string filename = @"..\..\demobilleder\" + "feep_p2_plain.pgm";
+            foreach (string line in File.ReadLines(filepath))
             {
                 Console.WriteLine("-- {0}", line);
             }
@@ -33,7 +33,7 @@ namespace pgmBilledeViewer
             UInt32 height = 0;
             UInt32 maxval = 0;
 
-            StreamReader sr = new StreamReader(File.OpenRead(filename));
+            StreamReader sr = new StreamReader(File.OpenRead(filepath));
             string linje1 = sr.ReadLine();
 
             Bitmap bitmappet = new Bitmap(1, 1);
@@ -107,14 +107,14 @@ namespace pgmBilledeViewer
 
                 Byte[] bits = new Byte[width * height];
                 UInt32 ptr = 0;
-
+                
                 while ((line = sr.ReadLine()) != null)
                 {
                     if (line[0] != '#')
                     {
                         //foreach(char tegn in line)
 
-                        string[] tallene = line.Replace("  ", " ").Split(' ');
+                        string[] tallene = line.Replace("   ", " ").Replace("  ", " ").Trim().Split(' ');
                         foreach (string tal in tallene)
                         {
                             //if (tegn != ' ')
@@ -140,9 +140,7 @@ namespace pgmBilledeViewer
 
                     System.Drawing.Color c = Color.FromArgb(brightPixel, brightPixel, brightPixel);
                     bitmappet.SetPixel(x, y, c);
-
-
-
+                    
                     x++;
                     if (++i % width == 0)
                     {
@@ -171,7 +169,7 @@ namespace pgmBilledeViewer
 
             
 
-            indlæsBillede();
+            //indlæsBillede();
 
         }
     }
