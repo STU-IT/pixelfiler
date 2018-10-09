@@ -136,7 +136,9 @@ namespace pgmBilledeViewer
                     else
                         Console.Write(" ");
 
-                    System.Drawing.Color c = Color.FromArgb(b, b, b);
+                    byte brightPixel = (byte)(b * (255 / maxval));
+
+                    System.Drawing.Color c = Color.FromArgb(brightPixel, brightPixel, brightPixel);
                     bitmappet.SetPixel(x, y, c);
 
 

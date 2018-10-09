@@ -15,6 +15,8 @@ namespace pgmBilledeViewer
         public Form1()
         {
             InitializeComponent();
+            
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.Image = Program.indlæsBillede();
         }
 

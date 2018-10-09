@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*
+
+En demo fra Søren Magnusson smag@tec.dk
+
+Implementerer http://netpbm.sourceforge.net/doc/pbm.html#plainpbm
+
+*/
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,7 +27,7 @@ namespace simpelPGMcs
 
         static void Main(string[] args)
         {
-            string filename = @"..\..\demobilleder\" + "feep.pbm";
+            string filename = @"..\..\demobilleder\" + "feep_p2_plain.pgm";
             foreach (string line in File.ReadLines(filename))
             {
                 Console.WriteLine("-- {0}", line);
@@ -31,6 +39,7 @@ namespace simpelPGMcs
 
             UInt32 width = 0;
             UInt32 height = 0;
+            UInt32 maxval = 0;
             
             StreamReader sr = new StreamReader(File.OpenRead(filename));
             string linje1 = sr.ReadLine();
@@ -79,9 +88,24 @@ namespace simpelPGMcs
                     }
                 }
 
+                if (fileType == Filetype.graymap)
+                {
+                    line = "";
+
+                    while (maxval == 0 && (line = sr.ReadLine()) != null)
+                    {
+                        if (line[0] != '#')
+                        {
+                            maxval = Convert.ToUInt32(line);
+                        }
+                    }
+                }
+
                 Console.WriteLine("Type {0}", fileType);
                 Console.WriteLine("Width {0}", width);
                 Console.WriteLine("Height {0}", height);
+                Console.WriteLine("MaxVal {0}", maxval);
+
 
                 /**************************************************
                  * Indlæser pixels
@@ -94,12 +118,15 @@ namespace simpelPGMcs
                 {
                     if (line[0] != '#')
                     {
-                        foreach(char tegn in line)
+                        //foreach(char tegn in line)
+
+                        string[] tallene = line.Replace("  ", " ").Split(' ');
+                        foreach ( string tal in tallene )
                         {
-                            if (tegn != ' ')
-                            {
-                                bits[ptr++] = Convert.ToByte(tegn - 48);
-                            }
+                            //if (tegn != ' ')
+                            //{
+                                bits[ptr++] = Convert.ToByte(tal);
+                            //}
                         }
                     }
                 }
@@ -107,7 +134,7 @@ namespace simpelPGMcs
                 uint i = 0;
                 foreach (var b in bits)
                 {
-                    if (b == 1)
+                    if (b >= 1)
                         Console.Write("X");
                     else
                         Console.Write(" ");
