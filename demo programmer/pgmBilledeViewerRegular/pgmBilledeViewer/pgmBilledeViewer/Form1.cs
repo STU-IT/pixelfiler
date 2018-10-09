@@ -15,7 +15,9 @@ namespace pgmBilledeViewer
         public Form1()
         {
             InitializeComponent();
-            
+
+            pictureBox1.InterpolationMode = System.Drawing.Drawing2D.InterpolationMode.HighQualityBicubic;
+
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             string fileName;
             //fileName = "feep_p2_plain.pgm";

@@ -132,10 +132,10 @@ namespace pgmBilledeViewer
                 uint i = 0;
                 foreach (var b in bits)
                 {
-                    if (b >= 1)
-                        Console.Write("X");
-                    else
-                        Console.Write(" ");
+                    //if (b >= 1)
+                    //    Console.Write("X");
+                    //else
+                    //    Console.Write(" ");
 
                     byte brightPixel = (byte)(b * (255 / maxval));
 
@@ -145,7 +145,7 @@ namespace pgmBilledeViewer
                     x++;
                     if (++i % width == 0)
                     {
-                        Console.WriteLine();
+                        //Console.WriteLine();
                         x = 0;
                         y++;
                     }
