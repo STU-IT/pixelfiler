@@ -5,8 +5,8 @@
 
 /demo programmer/**/bin/*
 /demo programmer/**/obj/*
-#/demo programmer/simpelPBMcs/.vs/*
 **/.vs/*
 
+**/desktop.ini
 
-#demo programmer/simpelPBMcs/.vs/simpelPBMcs/v15/.suo
+
